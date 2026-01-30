@@ -73,7 +73,7 @@ console.log("First character: " + combinedStr[0]); // "J"
 console.log("Character at index 5: " + combinedStr.charAt(5)); // "S"
 
 
-// Template literals (using backticks)
+// Template literals (using backticks) refers to a way of defining strings in JavaScript that allows for easier embedding of expressions and multi-line strings.
 let name = "Alice";
 let age = 30;
 let info = `My name is ${name} and I am ${age} years old.`;

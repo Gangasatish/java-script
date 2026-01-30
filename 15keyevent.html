@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Keyboard Event Example</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    #output {
+      margin-top: 20px;
+      padding: 20px;
+      font-size: 22px;
+      border: 2px solid black;
+      width: 300px;
+      text-align: center;
+      background-color: #f0f0f0;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Keyboard Event Example ⌨️</h1>
+  <p>Click anywhere on this page, then press any key.</p>
+
+  <div id="output">Press a key...</div>
+
+  <script>
+    // Listen for key press on the whole page
+    document.addEventListener("keypress", function (ab) {
+
+      // Print key name in browser console
+      console.log(ab.key);
+
+      // Show pressed key on the page
+      document.getElementById("output").textContent =
+        "You pressed: " + ab.key;
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Timing Functions</title>
+
+  <!-- =========================
+       CSS : Styling
+       ========================= -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f4f4f4;
+    }
+
+    h2 {
+      margin-bottom: 10px;
+    }
+
+    button {
+      padding: 8px 15px;
+      margin: 5px;
+      cursor: pointer;
+    }
+
+    #output {
+      margin-top: 15px;
+      padding: 15px;
+      background-color: white;
+      border: 1px solid #ccc;
+      min-height: 40px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>JavaScript Timing Functions ⏱️</h2>
+
+  <!-- Buttons to trigger timing functions -->
+  <button id="timeoutBtn">Run setTimeout</button>
+  <button id="intervalBtn">Start setInterval</button>
+  <button id="stopBtn">Stop Interval</button>
+
+  <!-- Output area -->
+  <div id="output">Output will appear here...</div>
+
+  <!-- =========================
+       JavaScript : Logic
+       ========================= -->
+  <script>
+
+    /* ==================================================
+       BASIC DEFINITIONS
+       ==================================================
+       setTimeout()  → runs code ONCE after a delay
+       setInterval() → runs code AGAIN and AGAIN
+       clearInterval() → stops setInterval
+    */
+
+    let output = document.getElementById("output");
+    let intervalId; // stores interval reference
+
+    /* ==================================================
+       1️⃣ setTimeout() – Run Once After Delay
+       Definition:
+       Executes code ONE time after given milliseconds
+
+       Syntax:
+       setTimeout(function, timeInMilliseconds);
+       ================================================== */
+    document.getElementById("timeoutBtn").addEventListener("click", function () {
+
+      output.textContent = "Waiting for 2 seconds...";
+
+      setTimeout(function () {
+        output.textContent = "✅ Hello after 2 seconds";
+      }, 2000); // 2000 ms = 2 seconds
+
+    });
+
+
+    /* ==================================================
+       2️⃣ setInterval() – Run Repeatedly
+       Definition:
+       Executes code repeatedly after fixed time
+
+       Syntax:
+       setInterval(function, time);
+       ================================================== */
+    document.getElementById("intervalBtn").addEventListener("click", function () {
+
+      let count = 1;
+
+      output.textContent = "Interval started...";
+
+      intervalId = setInterval(function () {
+        output.textContent = "⏳ Running every second: " + count;
+        count++;
+      }, 1000); // runs every 1 second
+
+    });
+
+
+    /* ==================================================
+       3️⃣ clearInterval() – Stop Repeating
+       Definition:
+       Stops a running setInterval
+
+       Syntax:
+       clearInterval(intervalId);
+       ================================================== */
+    document.getElementById("stopBtn").addEventListener("click", function () {
+
+      clearInterval(intervalId);
+      output.textContent = "⛔ Interval stopped";
+
+    });
+
+
+    /* ==================================================
+       4️⃣ Real-World Example: Countdown Timer
+       Logic used in:
+       OTP expiry, exam timers, resend buttons
+       ================================================== */
+
+    let countDown = 5;
+
+    let countdownTimer = setInterval(function () {
+
+      console.log("Countdown:", countDown);
+      countDown--;
+
+      if (countDown === 0) {
+        console.log("⏰ Time up!");
+        clearInterval(countdownTimer);
+      }
+
+    }, 1000);
+
+  </script>
+
+</body>
+</html>

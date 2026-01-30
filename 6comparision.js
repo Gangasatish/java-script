@@ -21,11 +21,11 @@ console.log(null === undefined); // false ✅
 //Comparing objects
 let obj1 = { name: "Satish" };
 let obj2 = { name: "Satish" };
-console.log(obj1 == obj2);   // false
-console.log(obj1 === obj2); // false
+console.log(obj1 == obj2);   // false because different references
+console.log(obj1 === obj2); // false because different references
 let obj3 = obj1;
-console.log(obj1 == obj3);   // true
-console.log(obj1 === obj3); // true
+console.log(obj1 == obj3);   // true because same reference
+console.log(obj1 === obj3); // true because same reference
 //Chained Comparisons
 console.log(5 < 10 && 10 < 15); // true
 console.log(5 < 10 < 15); // true (but be cautious)

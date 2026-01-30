@@ -1,15 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>My First JS</title>
+    <meta charset="UTF-8">
+    <title>DOM Practice</title>
+
+    <!-- Link external JS (IMPORTANT: defer) -->
+    <script src="14dom.js" defer></script>
+
+    <style>
+        .highlight {
+            border: 2px dashed red;
+        }
+        .active {
+            background-color: lightgreen;
+        }
+        .inactive {
+            background-color: lightcoral;
+        }
+        .main {
+            padding: 15px;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
 
-<h1>Hello JavaScript</h1>
+    <!-- Header -->
+    <h1 id="header">Original Header</h1>
 
-<script>
-  alert("Welcome to JavaScript!");
-</script>
+    <!-- Paragraphs (for getElementsByTagName) -->
+    <p>This is paragraph one.</p>
+    <p>This is paragraph two.</p>
+
+    <!-- Main container (for querySelector .main) -->
+    <div class="main">
+        <p>Main content area</p>
+    </div>
+
+    <!-- List (for ul li operations + traversal + delegation) -->
+    <ul>
+        <li class="item">Item 1</li>
+        <li class="item">Item 2</li>
+        <li class="item">Item 3</li>
+    </ul>
+
+    <!-- Form (for submit event) -->
+    <form id="myForm">
+        <input type="text" placeholder="Enter something" required />
+        <button type="submit">Submit</button>
+    </form>
 
 </body>
 </html>

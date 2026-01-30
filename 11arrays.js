@@ -10,11 +10,14 @@ console.log(fruits[2]); // Output: Cherry
 // Modifying array elements
 fruits[1] = 'Blueberry';
 console.log(fruits); // Output: ['Apple', 'Blueberry', 'Cherry']
+
+
 // array in javascript can hold different data types
 let mixedArray = [42, 'Hello', true, null, { name: 'John' }];
 console.log(mixedArray); // Output: [42, 'Hello', true, null, { name: 'John' }]
-// Array Methods
 
+
+// Array Methods
 // push() - adds one or more elements to the end of an array
 fruits.push('Date');
 console.log(fruits); // Output: ['Apple', 'Blueberry', 'Cherry', 'Date']
@@ -27,16 +30,16 @@ let firstFruit = fruits.shift();
 console.log(firstFruit); // Output: Apple
 console.log(fruits); // Output: ['Blueberry', 'Cherry']
 // unshift() - adds one or more elements to the beginning of an array
-fruits.unshift('Avocado');
-console.log(fruits); // Output: ['Avocado', 'Blueberry', 'Cherry']
+fruits.unshift('Avocado', 'Cherry');
+console.log(fruits); // Output: ['Avocado', 'Cherry', 'Blueberry', 'Cherry']
 // indexOf() - returns the first index at which a given element can be found
 let index = fruits.indexOf('Cherry');
-console.log(index); // Output: 2
-// slice() - returns a shallow copy of a portion of an array
+console.log(index); // Output: 1
+// slice() - returns a shallow copy of a portion of an array.this means it creates a new array containing the selected elements without modifying the original array.
 let citrusFruits = fruits.slice(1, 3);
 console.log(citrusFruits); // Output: ['Blueberry', 'Cherry']
 // splice() - changes the contents of an array by removing or replacing existing elements and/or adding new elements
-fruits.splice(1, 1, 'Blackberry', 'Cranberry');
+fruits.splice(1, 1, 'Blackberry', 'Cranberry'); // this deletes 1 element at index 1 and adds 'Blackberry' and 'Cranberry' at that position
 console.log(fruits); // Output: ['Avocado', 'Blackberry', 'Cranberry', 'Cherry']
 // forEach() - executes a provided function once for each array element
 fruits.forEach((fruit, index) => {
@@ -104,9 +107,9 @@ console.log(Array.isArray('Not an array')); // Output: false
 let moreFruits = ['Elderberry', 'Fig', 'Grape'];
 let allFruits = fruits.concat(moreFruits);
 console.log(allFruits); // Output: ['Avocado', 'Blackberry', 'Cherry', 'Cranberry', 'Elderberry', 'Fig', 'Grape']
-// Flattening an array using flat()
-let nestedArray = [1, [2, [3, [4]]]];
-let flatArray = nestedArray.flat(2);
+// Flattening an array using flat() refers to the method that creates a new array with all sub-array elements concatenated into it recursively up to the specified depth.
+let nestedArray = [1, [2, [3, [4]]]]; // in this array the depth is 3 because there are 3 levels of nested arrays.
+let flatArray = nestedArray.flat(2); // here we are flattening the array up to depth 2 so the result will be [1, 2, 3, [4]]
 console.log(flatArray); // Output: [1, 2, 3, [4]]
 // Filling an array using fill()
 let filledArray = new Array(5).fill(0);
@@ -127,6 +130,6 @@ console.log(fruits); // Output: ['Cranberry', 'Cherry', 'Blackberry', 'Avocado']
 // Joining array elements into a string using join()
 let joinedFruits = fruits.join(' - ');
 console.log(joinedFruits); // Output: Cranberry - Cherry - Blackberry - Avocado
-// Spreading an array using spread operator
+// Spreading an array using spread operator refers to the syntax that allows an iterable such as an array to be expanded in places where zero or more arguments or elements are expected.
 let spreadFruits = [...fruits, 'Honeydew', 'Indian Fig'];
 console.log(spreadFruits); // Output: ['Cranberry', 'Cherry', 'Blackberry', 'Avocado', 'Honeydew', 'Indian Fig']

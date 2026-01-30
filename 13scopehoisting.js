@@ -69,8 +69,8 @@ function hoistedFunction() {
     console.log("I am a hoisted function");
 }
 //Difference between var, let, and const in terms of hoisting
-console.log(varVariable);
-var varVariable = "I am var";
+console.log(varVariable); // Output: undefined
+var varVariable = "I am var"; 
 //console.log(letVariable); // Uncaught ReferenceError: Cannot access 'letVariable' before initialization
 let letVariable = "I am let";
 //console.log(constVariable); // Uncaught ReferenceError: Cannot access 'constVariable' before initialization

@@ -53,7 +53,7 @@ let car = {
     }
 };
 console.log(car.getCarInfo()); // Output: Toyota Camry 2020
-//object constructor function
+//object constructor function is a function that is used to create multiple objects with the same properties and methods.
 function Animal(type, name) {
     this.type = type;
     this.name = name;
@@ -61,14 +61,14 @@ function Animal(type, name) {
         return this.name + " is a " + this.type;
     };
 }
-let dog = new Animal("Dog", "Buddy");
+let dog = new Animal("Dog", "Buddy"); // creating a new object using the Animal constructor function by here new keyword is used to create a new instance of the Animal object.
 console.log(dog.getInfo()); // Output: Buddy is a Dog
 let cat = new Animal("Cat", "Whiskers");
 console.log(cat.getInfo()); // Output: Whiskers is a Cat
 //object.assign() method to copy properties from one object to another
 let obj1 = { a: 1, b: 2 };
 let obj2 = { b: 3, c: 4 };
-let mergedObj = Object.assign({}, obj1, obj2);
+let mergedObj = Object.assign({}, obj1, obj2); // here we are creating a new object by merging obj1 and obj2. if there are any duplicate keys, the value from the last object will be used. in this case, the value of key 'b' from obj2 will overwrite the value from obj1.
 console.log(mergedObj); // Output: { a: 1, b: 3, c: 4 }
 //object.keys() method to get an array of object keys
 let keys = Object.keys(person);
@@ -86,7 +86,7 @@ console.log(person.hasOwnProperty("city")); // Output: false
 Object.freeze(person);
 person.age = 35; // This will not change the age property
 console.log(person.age); // Output: 31
-//sealing an object to prevent adding or deleting properties using Object.seal() method
+//sealing an object to prevent adding or deleting properties using Object.seal() method. it allows modification of existing properties but prevents adding or deleting properties.
 Object.seal(person);
 delete person.country; // This will not delete the country property
 person.city = "Los Angeles"; // This will not add a new city property
@@ -97,7 +97,7 @@ let animal = {
         return this.name + " makes a sound";
     }
 };
-let monkey = Object.create(animal);
+let monkey = Object.create(animal); // here we are creating a new object monkey that inherits properties and methods from the animal object.
 monkey.name = "Koko";
 console.log(monkey.speak()); // Output: Koko makes a sound
 
