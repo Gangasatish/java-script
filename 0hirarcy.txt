@@ -1,0 +1,176 @@
+🌍 BROWSER (Chrome / Firefox / Edge)
+│
+├─ 🖥️ User Interface (UI)
+│   └─ Tabs, address bar, buttons, DevTools
+│
+├─ 🧠 Browser Engine (Controller)
+│   └─ Coordinates Rendering Engine & JS Engine
+│
+├─ 🎨 Rendering Engine
+│   ├─ HTML Parser → DOM Tree
+│   ├─ CSS Parser → CSSOM
+│   ├─ Render Tree
+│   ├─ Layout
+│   └─ Paint pixels
+│
+├─ 🧠 JavaScript Engine (Language Executor)
+│   ├─ Parser + Compiler
+│   ├─ Call Stack
+│   ├─ Heap (Memory)
+│   ├─ Execution Contexts
+│   └─ ECMAScript Built-ins
+│
+├─ 🌐 Web APIs (Browser-provided)
+│   ├─ DOM APIs → document, elements
+│   ├─ Timer APIs → setTimeout, setInterval
+│   ├─ Network APIs → fetch, WebSocket
+│   ├─ Event APIs → addEventListener
+│   ├─ Storage APIs → localStorage, sessionStorage
+│   └─ Console API → console.log
+│
+├─ 🔁 Event Loop + Queues
+│   ├─ Call Stack (JS Engine)
+│   ├─ Microtask Queue (Promises)
+│   ├─ Callback / Task Queue
+│   └─ Event Loop (Scheduler)
+│
+├─ 🗂️ Storage & Cache
+│   ├─ Cookies
+│   ├─ localStorage
+│   ├─ sessionStorage
+│   ├─ IndexedDB
+│   └─ Cache Storage
+│
+├─ 🔒 Security & Sandbox
+│   ├─ Same-Origin Policy
+│   ├─ Permissions
+│   └─ Memory Isolation
+│
+└─ 🪟 window (GLOBAL OBJECT exposed to JavaScript)
+    │
+    ├─ 🌐 Browser Web APIs
+    │   ├─ window.document
+    │   ├─ window.setTimeout
+    │   ├─ window.fetch
+    │   ├─ window.console
+    │   └─ window.localStorage
+    │
+    ├─ 📦 JavaScript Global Objects (from JS Engine)
+    │   ├─ Object      (function object, constructor)
+    │   ├─ Function    (function object, constructor)
+    │   ├─ Array       (function object, constructor)
+    │   ├─ String      (function object, constructor)
+    │   ├─ Number      (function object, constructor)
+    │   ├─ Boolean     (function object, constructor)
+    │   ├─ Promise     (function object, constructor)
+    │   ├─ Date        (function object, constructor)
+    │   └─ Math        (plain object, NOT constructor)
+    │
+    └─ 🧬 PROTOTYPE SYSTEM (LANGUAGE-LEVEL INHERITANCE)
+        │
+        ├─ Object.prototype   ⭐ ROOT OF MOST OBJECTS
+        │   ├─ constructor
+        │   ├─ toString()
+        │   ├─ valueOf()
+        │   ├─ hasOwnProperty()
+        │   ├─ isPrototypeOf()
+        │   ├─ propertyIsEnumerable()
+        │   ├─ __proto__ (getter/setter)
+        │   └─ __defineGetter__(), __defineSetter__()
+        │        ↓
+        │       null
+        │
+        ├─ Function.prototype
+        │   ├─ call()
+        │   ├─ apply()
+        │   ├─ bind()
+        │   ├─ toString()
+        │   ├─ length
+        │   └─ name
+        │        ↓
+        │   Object.prototype
+        │        ↓
+        │       null
+        │
+        ├─ Array.prototype
+        │   ├─ push()
+        │   ├─ pop()
+        │   ├─ shift()
+        │   ├─ unshift()
+        │   ├─ map()
+        │   ├─ filter()
+        │   ├─ reduce()
+        │   ├─ forEach()
+        │   ├─ slice()
+        │   ├─ splice()
+        │   ├─ includes()
+        │   ├─ indexOf()
+        │   ├─ find()
+        │   └─ length
+        │        ↓
+        │   Object.prototype
+        │        ↓
+        │       null
+        │
+        ├─ String.prototype
+        │   ├─ toUpperCase()
+        │   ├─ toLowerCase()
+        │   ├─ trim()
+        │   ├─ slice()
+        │   ├─ substring()
+        │   ├─ replace()
+        │   ├─ split()
+        │   ├─ charAt()
+        │   ├─ includes()
+        │   └─ length
+        │        ↓
+        │   Object.prototype
+        │        ↓
+        │       null
+        │
+        ├─ Number.prototype
+        │   ├─ toFixed()
+        │   ├─ toPrecision()
+        │   ├─ toString()
+        │   └─ valueOf()
+        │        ↓
+        │   Object.prototype
+        │        ↓
+        │       null
+        │
+        ├─ Boolean.prototype
+        │   ├─ toString()
+        │   └─ valueOf()
+        │        ↓
+        │   Object.prototype
+        │        ↓
+        │       null
+        │
+        ├─ Promise.prototype
+        │   ├─ then()
+        │   ├─ catch()
+        │   ├─ finally()
+        │        ↓
+        │   Object.prototype
+        │        ↓
+        │       null
+        │
+        ├─ Date.prototype
+        │   ├─ getDate()
+        │   ├─ getFullYear()
+        │   ├─ getTime()
+        │   ├─ toISOString()
+        │   ├─ toLocaleString()
+        │   └─ toString()
+        │        ↓
+        │   Object.prototype
+        │        ↓
+        │       null
+        │
+        └─ ⚠️ SPECIAL CASE: Math (NO PROTOTYPE CHAIN)
+            ├─ max()
+            ├─ min()
+            ├─ random()
+            ├─ floor()
+            ├─ ceil()
+            └─ round()

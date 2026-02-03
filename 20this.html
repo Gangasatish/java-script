@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript this Keyword</title>
+
+  <!-- CSS for visibility -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>JavaScript "this" Keyword Demo</h2>
+
+  <button id="btn">Click Me</button>
+
+  <script>
+    /* ============================
+       1️⃣ this in Global Scope
+       ============================ */
+    console.log("Global this:", this);
+    // In browser → window
+
+
+    /* ============================
+       2️⃣ this in Object Method
+       ============================ */
+    let user = {
+      name: "Satish",
+
+      // greet is a METHOD (function inside object)
+      greet: function () {
+        console.log("Object method this.name:", this.name);
+      }
+    };
+
+    user.greet(); // this = user
+
+
+    /* ============================
+       3️⃣ this in Normal Function
+       ============================ */
+    function show() {
+      console.log("Normal function this:", this);
+    }
+
+    show(); // this = window
+
+
+    /* ============================
+       4️⃣ this in Event Handler
+       ============================ */
+    let btn = document.querySelector("#btn");
+
+    btn.addEventListener("click", function () {
+      console.log("Event handler this:", this);
+      // this = button element
+    });
+
+
+    /* ============================
+       5️⃣ Arrow Function & this
+       ============================ */
+    let obj = {
+      name: "Satish",
+      greet: () => {
+        console.log("Arrow function this.name:", this.name);
+      }
+    };
+
+    obj.greet(); // undefined (arrow has no this)
+
+
+    /* ============================
+       6️⃣ Correct Object Method
+       ============================ */
+    let correctObj = {
+      name: "Satish",
+      greet() {
+        console.log("Correct this.name:", this.name);
+      }
+    };
+
+    correctObj.greet();
+
+  </script>
+
+</body>
+</html>

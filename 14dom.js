@@ -3,6 +3,8 @@
 // in simple terms, the DOM is a tree-like structure that represents the elements of a web page, allowing developers to manipulate and interact with those elements using JavaScript.
 //Accessing DOM Elements
 //Using getElementById()
+document.write("Welcome to JavaScript");
+
 let header = document.getElementById("header"); // here we are accessing the element with id "header"
 console.log(header);
 //Using getElementsByClassName()

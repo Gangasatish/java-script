@@ -106,13 +106,13 @@ function Person(firstName, lastName) {
     this.firstName = firstName;
     this.lastName = lastName;
 }
-Person.prototype.getFullName = function() {
+Person.prototype.getullName = function() {
     return this.firstName + " " + this.lastName;
 };
 let person1 = new Person("Jane", "Doe");
-console.log(person1.getFullName()); // Output: Jane Doe
+console.log(person1.getullName()); // Output: Jane Doe
 let person2 = new Person("Mike", "Smith");
-console.log(person2.getFullName()); // Output: Mike Smith
+console.log(person2.getullName()); // Output: Mike Smith
 //checking prototype chain using isPrototypeOf() method
 console.log(Person.prototype.isPrototypeOf(person1)); // Output: true
 console.log(Person.prototype.isPrototypeOf(person2)); // Output: true
