@@ -1,0 +1,32 @@
+<!-- get in api is used to fetch data from the server. It is a method of the XMLHttpRequest object in JavaScript, and it is commonly used in web development to retrieve data from a server asynchronously without refreshing the page. The get method sends a request to the specified URL and retrieves the response, which can be in various formats such as JSON, XML, or plain text. -->
+<!DOCTYPE html>
+<html>
+<head>
+<title>GET Example</title>
+
+<style>
+body { font-family: Arial; background:#f2f2f2; padding:40px; }
+.box { background:white; padding:20px; max-width:400px; margin:auto; }
+button { padding:10px; }
+</style>
+</head>
+
+<body>
+
+<div class="box">
+  <h3>GET Users</h3>
+  <button onclick="loadUsers()">Load Users</button>
+  <pre id="result"></pre>
+</div>
+
+<script>
+async function loadUsers() {
+  const res = await fetch("https://jsonplaceholder.typicode.com/users");
+  const data = await res.json();
+  document.getElementById("result").textContent =
+    JSON.stringify(data, null, 2);
+}
+</script>
+
+</body>
+</html>
