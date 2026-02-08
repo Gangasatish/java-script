@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>sessionStorage Demo</title>
+
+<style>
+/*
+========================================
+SESSION STORAGE INTRODUCTION (READ FIRST)
+========================================
+
+sessionStorage is TEMPORARY storage inside your browser.
+
+IMPORTANT DIFFERENCE:
+
+localStorage  -> permanent (stays forever)
+sessionStorage -> temporary (dies when TAB closes)
+
+sessionStorage:
+- survives page refresh
+- cleared when browser TAB is closed
+- only JavaScript can access it
+- server NEVER sees it
+
+Used for:
+- multi-step forms
+- OTP flow
+- temporary data
+- page navigation state
+
+Works as KEY = VALUE
+
+Main methods:
+
+sessionStorage.setItem(key,value)  -> save
+sessionStorage.getItem(key)        -> read
+sessionStorage.removeItem(key)     -> delete one
+sessionStorage.clear()             -> delete all
+*/
+
+body {
+    font-family: Arial;
+    padding: 40px;
+}
+
+input {
+    padding: 10px;
+    width: 220px;
+}
+
+button {
+    padding: 10px;
+    margin: 5px;
+}
+
+#output {
+    margin-top: 20px;
+    font-size: 18px;
+    color: blue;
+}
+</style>
+</head>
+
+<body>
+
+<h1>⏳ sessionStorage Complete Demo</h1>
+
+<input id="nameInput" placeholder="Enter temporary name">
+
+<br><br>
+
+<button onclick="saveData()">Save</button>
+<button onclick="readData()">Read</button>
+<button onclick="deleteData()">Delete Name</button>
+<button onclick="clearAll()">Clear ALL</button>
+
+<p id="output"></p>
+
+<script>
+/*
+========================================
+SAVE DATA
+========================================
+Saves value only for current TAB.
+*/
+function saveData() {
+    let name = document.getElementById("nameInput").value;
+
+    sessionStorage.setItem("tempUser", name);
+
+    document.getElementById("output").innerText =
+        "Saved in sessionStorage!";
+}
+
+/*
+========================================
+READ DATA
+========================================
+Reads temporary data from browser.
+*/
+function readData() {
+    let user = sessionStorage.getItem("tempUser");
+
+    if(user === null) {
+        document.getElementById("output").innerText =
+            "No session data found!";
+    } else {
+        document.getElementById("output").innerText =
+            "Session User: " + user;
+    }
+}
+
+/*
+========================================
+DELETE SINGLE ITEM
+========================================
+Deletes only one key.
+*/
+function deleteData() {
+    sessionStorage.removeItem("tempUser");
+
+    document.getElementById("output").innerText =
+        "Session user deleted!";
+}
+
+/*
+========================================
+CLEAR EVERYTHING
+========================================
+Deletes all sessionStorage for this tab.
+*/
+function clearAll() {
+    sessionStorage.clear();
+
+    document.getElementById("output").innerText =
+        "All sessionStorage cleared!";
+}
+
+/*
+========================================
+AUTO LOAD CHECK
+========================================
+Shows data after refresh.
+Proves sessionStorage survives reload.
+*/
+window.onload = function() {
+    let autoUser = sessionStorage.getItem("tempUser");
+
+    if(autoUser) {
+        document.getElementById("output").innerText =
+            "Welcome back (same tab): " + autoUser;
+    }
+};
+</script>
+
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>localStorage Demo</title>
+
+<style>
+/*
+========================================
+localStorage INTRODUCTION (READ THIS)
+========================================
+
+localStorage is a permanent storage box inside your browser.
+
+- Data stays even after refresh
+- Data stays even after closing browser
+- Only JavaScript can access it
+- Server NEVER sees localStorage
+- Used for UI/app memory like:
+  theme, username, cart, settings
+
+localStorage works as KEY = VALUE
+
+Example:
+theme = dark
+username = Satish
+
+Main functions:
+localStorage.setItem(key, value)   -> save
+localStorage.getItem(key)         -> read
+localStorage.removeItem(key)      -> delete one
+localStorage.clear()              -> delete all
+*/
+
+body {
+    font-family: Arial;
+    padding: 40px;
+}
+
+input {
+    padding: 10px;
+    width: 200px;
+}
+
+button {
+    padding: 10px;
+    margin: 5px;
+}
+
+#output {
+    margin-top: 20px;
+    font-size: 18px;
+    color: green;
+}
+</style>
+</head>
+
+<body>
+
+<h1>📦 localStorage Complete Demo</h1>
+
+<input id="nameInput" placeholder="Enter your name">
+
+<br><br>
+
+<button onclick="saveData()">Save to localStorage</button>
+<button onclick="readData()">Read from localStorage</button>
+<button onclick="deleteData()">Delete name</button>
+<button onclick="clearAll()">Clear ALL</button>
+
+<p id="output"></p>
+
+<script>
+/*
+========================================
+SAVE DATA
+========================================
+This stores data permanently in browser.
+Even refresh / close browser -> data stays.
+*/
+function saveData() {
+    let name = document.getElementById("nameInput").value;
+
+    // Save key=value
+    localStorage.setItem("username", name);
+
+    document.getElementById("output").innerText =
+        "Saved username in localStorage!";
+}
+
+/*
+========================================
+READ DATA
+========================================
+Reads data from browser storage.
+Server is NOT involved.
+*/
+function readData() {
+    let storedName = localStorage.getItem("username");
+
+    if(storedName === null) {
+        document.getElementById("output").innerText =
+            "No data found!";
+    } else {
+        document.getElementById("output").innerText =
+            "Stored Username: " + storedName;
+    }
+}
+
+/*
+========================================
+DELETE SINGLE ITEM
+========================================
+Removes only ONE key.
+*/
+function deleteData() {
+    localStorage.removeItem("username");
+
+    document.getElementById("output").innerText =
+        "Username deleted!";
+}
+
+/*
+========================================
+CLEAR EVERYTHING
+========================================
+Deletes ALL localStorage keys for this site.
+*/
+function clearAll() {
+    localStorage.clear();
+
+    document.getElementById("output").innerText =
+        "All localStorage cleared!";
+}
+
+/*
+========================================
+AUTO LOAD CHECK
+========================================
+When page loads, check if data exists.
+This proves persistence.
+*/
+window.onload = function() {
+    let autoName = localStorage.getItem("username");
+
+    if(autoName) {
+        document.getElementById("output").innerText =
+            "Welcome back: " + autoName;
+    }
+};
+</script>
+
+</body>
+</html>

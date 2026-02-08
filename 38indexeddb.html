@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>IndexedDB Demo</title>
+
+<style>
+/*
+====================================================
+INDEXEDDB INTRODUCTION (READ THIS FIRST)
+====================================================
+
+IndexedDB is a REAL DATABASE inside your browser.
+
+Think like this:
+
+cookie        -> tiny ID slip
+localStorage -> small notebook
+sessionStorage -> temporary sticky note
+IndexedDB    -> full filing cabinet (database)
+
+IndexedDB features:
+- Stores LARGE data
+- Stores OBJECTS (not just strings)
+- Permanent (does not disappear on refresh/close)
+- Only JavaScript can access it
+- Server NEVER sees IndexedDB
+
+Used for:
+- Offline apps
+- Large forms
+- Chat history
+- Notes apps
+- Progressive Web Apps (PWA)
+
+Core concepts:
+
+Database  -> like MyDB
+ObjectStore -> like table (users)
+Record -> one row {id:1, name:"Satish"}
+
+Main operations:
+1. Open DB
+2. Create Store
+3. Add Data
+4. Read Data
+5. Update Data
+6. Delete Data
+7. Clear Store
+*/
+
+body {
+    font-family: Arial;
+    padding: 40px;
+}
+
+input {
+    padding: 10px;
+    margin: 5px;
+}
+
+button {
+    padding: 10px;
+    margin: 5px;
+}
+
+#output {
+    margin-top: 20px;
+    font-size: 16px;
+    white-space: pre-line;
+}
+</style>
+</head>
+
+<body>
+
+<h1>🗄 IndexedDB Complete Demo</h1>
+
+<input id="name" placeholder="Name">
+<input id="age" placeholder="Age">
+
+<br><br>
+
+<button onclick="addUser()">Add User</button>
+<button onclick="readUsers()">Read Users</button>
+<button onclick="updateUser()">Update User (ID 1)</button>
+<button onclick="deleteUser()">Delete User (ID 1)</button>
+<button onclick="clearStore()">Clear All</button>
+
+<div id="output"></div>
+
+<script>
+/*
+====================================================
+STEP 1: OPEN / CREATE DATABASE
+====================================================
+*/
+
+let db;
+
+let request = indexedDB.open("MyDatabase", 1);
+
+// Runs ONLY first time (or version change)
+request.onupgradeneeded = function(e) {
+    db = e.target.result;
+
+    // Create Object Store (table)
+    db.createObjectStore("users", { keyPath: "id" });
+};
+
+// Runs when DB is ready
+request.onsuccess = function(e) {
+    db = e.target.result;
+    log("Database opened successfully.");
+};
+
+request.onerror = function() {
+    log("Error opening database.");
+};
+
+/*
+====================================================
+ADD USER
+====================================================
+*/
+function addUser() {
+    let name = document.getElementById("name").value;
+    let age = document.getElementById("age").value;
+
+    let tx = db.transaction("users", "readwrite");
+    let store = tx.objectStore("users");
+
+    // Create record
+    let user = {
+        id: Date.now(),   // unique id
+        name: name,
+        age: age
+    };
+
+    store.add(user);
+
+    log("User added.");
+}
+
+/*
+====================================================
+READ ALL USERS
+====================================================
+*/
+function readUsers() {
+    let tx = db.transaction("users", "readonly");
+    let store = tx.objectStore("users");
+
+    let request = store.getAll();
+
+    request.onsuccess = function() {
+        log("Users:\n" + JSON.stringify(request.result, null, 2));
+    };
+}
+
+/*
+====================================================
+UPDATE USER (hardcoded ID example)
+====================================================
+*/
+function updateUser() {
+    let tx = db.transaction("users", "readwrite");
+    let store = tx.objectStore("users");
+
+    // Example record (ID must exist)
+    let updatedUser = {
+        id: 1,
+        name: "Updated Name",
+        age: 99
+    };
+
+    store.put(updatedUser);
+
+    log("Tried updating ID = 1 (works only if ID exists).");
+}
+
+/*
+====================================================
+DELETE USER (ID = 1)
+====================================================
+*/
+function deleteUser() {
+    let tx = db.transaction("users", "readwrite");
+    let store = tx.objectStore("users");
+
+    store.delete(1);
+
+    log("Tried deleting ID = 1.");
+}
+
+/*
+====================================================
+CLEAR ENTIRE STORE
+====================================================
+*/
+function clearStore() {
+    let tx = db.transaction("users", "readwrite");
+    let store = tx.objectStore("users");
+
+    store.clear();
+
+    log("All users cleared.");
+}
+
+/*
+====================================================
+OUTPUT HELPER
+====================================================
+*/
+function log(msg) {
+    document.getElementById("output").innerText = msg;
+}
+</script>
+
+</body>
+</html>

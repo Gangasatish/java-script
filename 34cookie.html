@@ -1,0 +1,76 @@
+<!-- cookie is a small piece of data stored on the user's computer by the web browser while browsing a website. It is used to remember information about the user, such as login status, preferences, and other data that can enhance the user experience on the website. Cookies are sent back to the server with each request, allowing the server to recognize the user and provide personalized content or services.
+A cookie is a small name=value data that a server (website) sends and the browser stores on your computer.
+Browser sends this cookie back on every visit so the website can recognize you (login, preferences, etc.).
+
+Types:
+👉 Session cookie – deleted when browser closes
+👉 Persistent cookie – stays until expiry time
+Used to store things like sessionId, token, theme, language (very small data only). -->
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Cookie Demo</title>
+
+<style>
+body {
+    font-family: Arial;
+    padding: 40px;
+}
+
+input {
+    padding: 10px;
+}
+
+button {
+    padding: 10px;
+    margin: 5px;
+}
+
+#result {
+    margin-top: 20px;
+    font-size: 18px;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>🍪 Cookie Demo (Single File)</h1>
+
+<input id="username" placeholder="Enter your name">
+
+<br><br>
+
+<button onclick="saveCookie()">Save Cookie</button>
+<button onclick="readCookie()">Read Cookie</button>
+<button onclick="deleteCookie()">Delete Cookie</button>
+
+<p id="result"></p>
+
+<script>
+function saveCookie() {
+    let name = document.getElementById("username").value;
+
+    // Browser stores cookie
+    document.cookie = "user=" + name + "; path=/"; <!-- here .cookie is a property of document object which is used to set or get cookies. The format for setting a cookie is "name=value; expires=expiration_date; path=path; domain=domain; secure". In this example, we are setting a cookie with the name "user" and the value of the variable "name". The "path=/" part means that the cookie will be accessible on all pages of the website.-->
+    document.getElementById("result").innerText =
+        "Cookie Saved!";
+}
+
+function readCookie() {
+    document.getElementById("result").innerText =
+        "Current Cookies: " + document.cookie;
+}
+
+function deleteCookie() {
+    document.cookie = "user=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
+
+    document.getElementById("result").innerText =
+        "Cookie Deleted!";
+}
+</script>
+
+</body>
+</html>

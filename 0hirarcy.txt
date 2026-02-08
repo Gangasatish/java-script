@@ -65,6 +65,7 @@
     │   ├─ Promise     (function object, constructor)
     │   ├─ Date        (function object, constructor)
     │   └─ Math        (plain object, NOT constructor)
+    |   |_Error
     │
     └─ 🧬 PROTOTYPE SYSTEM (LANGUAGE-LEVEL INHERITANCE)
         │
@@ -168,9 +169,34 @@
         │       null
         │
         └─ ⚠️ SPECIAL CASE: Math (NO PROTOTYPE CHAIN)
-            ├─ max()
-            ├─ min()
-            ├─ random()
-            ├─ floor()
-            ├─ ceil()
-            └─ round()
+        |    ├─ max()
+        |    ├─ min()
+        |    ├─ random()
+        |    ├─ floor()
+        |    ├─ ceil()
+        |    └─ round()
+        |
+        |
+        └─🔴 Built-in Error System
+              │
+              ├─ Error  (BASE / PARENT)
+              │   ├─ name
+              │   ├─ message
+              │   └─ stack
+              │
+              ├─ SyntaxError
+              │     → Wrong JS syntax
+              │
+              ├─ ReferenceError
+              │     → Variable not defined
+              │
+              ├─ TypeError
+              │     → Wrong data type usage
+              │
+              ├─ RangeError
+              │     → Value outside allowed range
+              │
+              ├─ URIError
+              │     → Bad URL encoding
+              │
+              └─ EvalError (legacy / rare) 
