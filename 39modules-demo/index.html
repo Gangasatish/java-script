@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JavaScript Modules Demo</title>
+
+<style>
+/*
+=========================================
+MODULES INTRODUCTION (READ THIS)
+=========================================
+
+JavaScript Modules allow us to:
+
+- Split code into multiple files
+- Organize logic
+- Reuse code
+- Avoid global variables
+
+Key concepts we learned:
+
+1) export  -> share code
+2) import  -> use shared code
+3) Named export
+4) Module scope (no globals)
+5) type="module" (VERY IMPORTANT)
+
+Flow:
+
+index.html -> loads main.js
+main.js -> imports math.js
+math.js -> exports functions
+*/
+
+body {
+    font-family: Arial;
+    padding: 40px;
+}
+
+.box {
+    margin-top: 20px;
+    font-size: 20px;
+    color: green;
+}
+</style>
+</head>
+
+<body>
+
+<h1>📦 JavaScript Modules Mini Project</h1>
+
+<div class="box" id="addResult"></div>
+<div class="box" id="subResult"></div>
+
+<!-- ======================================
+ THIS LINE ENABLES MODULE SYSTEM
+ WITHOUT type="module" NOTHING WORKS
+====================================== -->
+
+<script type="module" src="main.js"></script>
+
+</body>
+</html>

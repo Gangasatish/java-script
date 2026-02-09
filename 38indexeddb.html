@@ -97,23 +97,23 @@ STEP 1: OPEN / CREATE DATABASE
 
 let db;
 
-let request = indexedDB.open("MyDatabase", 1);
+let request = indexedDB.open("MyDatabase", 1); //here indexedDB.open("DB_NAME", VERSION_NUMBER) is prebuilt function to open or create database. If DB doesn't exist, it will be created. Version number is used to trigger upgrade (schema changes).
 
 // Runs ONLY first time (or version change)
-request.onupgradeneeded = function(e) {
+request.onupgradeneeded = function(e) {  // here onupgradeneeded event is triggered when database is created for the first time or when version number is increased. This is where we define the structure of our database (object stores, indexes).
     db = e.target.result;
 
     // Create Object Store (table)
-    db.createObjectStore("users", { keyPath: "id" });
+    db.createObjectStore("users", { keyPath: "id" }); // here createObjectStore is used to create a new object store (like a table) named "users". keyPath: "id" means that the "id" property of our records will be the unique key for that store.
 };
 
 // Runs when DB is ready
-request.onsuccess = function(e) {
+request.onsuccess = function(e) { // here onsuccess event is triggered when the database is successfully opened. This is where we can start using the database.
     db = e.target.result;
     log("Database opened successfully.");
 };
 
-request.onerror = function() {
+request.onerror = function() { // here onerror event is triggered if there was an error opening the database.
     log("Error opening database.");
 };
 
@@ -123,11 +123,11 @@ ADD USER
 ====================================================
 */
 function addUser() {
-    let name = document.getElementById("name").value;
+    let name = document.getElementById("name").value; 
     let age = document.getElementById("age").value;
 
-    let tx = db.transaction("users", "readwrite");
-    let store = tx.objectStore("users");
+    let tx = db.transaction("users", "readwrite"); //db.transaction("users", "readwrite") creates a new transaction for the "users" object store with readwrite access, allowing us to add or modify data in that store.
+    let store = tx.objectStore("users"); //tx.objectStore("users") gets a reference to the "users" object store within the transaction, which we can then use to perform operations like add, get, put, delete, etc.
 
     // Create record
     let user = {
